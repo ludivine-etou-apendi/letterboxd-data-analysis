@@ -25,7 +25,7 @@ Tout le code et les fichiers de données sont dans le dossier `letterboxd_group9
 | `letterboxd_group9/scrape_letterboxd.py` | Collecte des URLs depuis les pages populaires Letterboxd. |
 | `letterboxd_group9/clean_links.py` | Lecture de `all_letterboxd_links.txt`, suppression des doublons → écriture de `all_letterboxd_links_clean.txt`. |
 | `letterboxd_group9/scraperletterboxd.py` | Scraping des fiches à partir de la liste nettoyée ; export progressif en JSON et CSV. |
-| `letterboxd_group9/notespardécennies.py` | Analyse statistique sur le CSV, moyennes par décennie, génération du box plot. |
+| `letterboxd_group9/notes_par_decennies.py` | Analyse statistique sur le CSV, moyennes par décennie, génération du box plot. |
 | `letterboxd_group9/all_letterboxd_links.txt` | Liste brute des URLs collectées avant dédoublonnage. |
 | `letterboxd_group9/all_letterboxd_links_clean.txt` | Liste des URLs utilisées pour le scraping détaillé (sans doublons). |
 | `letterboxd_group9/movies_data_PROGRESSIVE.json` | Données agrégées au format JSON. |
