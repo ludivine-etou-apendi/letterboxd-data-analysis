@@ -45,7 +45,7 @@ python3 scraperletterboxd.py
 4. **Analyse** (à partir du CSV déjà présent) :
 
 ```bash
-python3 notespardécennies.py
+python3 notes_par_decennies.py
 ```
 
 ## Avertissement
