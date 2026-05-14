@@ -1,29 +1,54 @@
-# groupe_9_github.txt
-# Projet Web Scraping & Analyse de Films (Letterboxd) - Groupe 9
+# Letterboxd — web scraping et analyse de données cinéma
 
-Ce projet Python vise à scraper des données détaillées (Note, Genre, Réalisateurs etc.) sur 10 795 films depuis la plateforme Letterboxd, puis à effectuer une analyse statistique sur les données collectées.
+Projet **académique** (travail de groupe, groupe 9) : collecte d’URLs sur Letterboxd, nettoyage des doublons, scraping des fiches films (notes, genres, réalisateurs, etc.) sur **10 795** titres, puis analyse statistique et visualisations.
 
----
+Les données présentes dans ce dépôt servent de **jeu complet** pour rejouer les analyses ou explorer le dataset sans relancer tout le scraping.
 
-# Structure et Description des Fichiers
+## Contexte
 
-| Fichier | Type | Description |
-| :--- | :--- | :--- |
-| `scrape_letterboxd.py` | Code | Script pour la collecte initiale des URLs des films à partir des pages populaires de Letterboxd. |
-| `clean_links.py` | Code | Script de nettoyage qui lit la liste brute des liens et supprime les doublons pour créer le fichier `all_letterboxd_links_clean.txt`. |
-| `scraperletterboxd.py` | Code | Script principal de scraping qui utilise les liens propres (`all_letterboxd_links_clean.txt`) pour visiter chaque page de film et extraire les données détaillées (notes, genres, etc.). |
-| `notespardécennies.py` | Code | Script d'analyse statistique qui lit le fichier CSV, calcule les moyennes par décennie et génère le graphique (box plot). |
-| `all_letterboxd_links_clean.txt` | Données | Liste finale et propre des 10 795 URLs de films utilisées pour le scraping détaillé. |
-| `movies_data_PROGRESSIVE.csv` | Données | Jeu de données complet et propre au format CSV, utilisé pour l'analyse statistique. |
-| `movies_data_PROGRESSIVE.json` | Données | Ensemble des données brutes des 10 795 films collectées par le scraper, au format JSON. |
-| `box_plot_notes_par_decennie.png` | Résultat | Visualisation graphique (Box Plot) des notes distribuées par décennie. |
+Ce dépôt documente un projet réalisé dans un cadre **pédagogique**. Les données issues de pages **publiques** Letterboxd sont utilisées à des fins **non commerciales** et d’apprentissage.
 
----
+## Dépendances
 
-# Exécution du Code (Important)
+Installer les bibliothèques Python nécessaires (Python 3.10+ recommandé) :
 
-Pour executer le scraping tapez "python3 scraperletterboxd.py" ⚠️ ATTENTION : L'étape de scraping des 10 795 films individuels (scraperletterboxd.py) nous a pris plus de 16 heures.
+```bash
+pip install crawl4ai beautifulsoup4 pandas matplotlib seaborn
+```
 
-Pour exécuter le script sur un échantillon de liens au lieu de la totalité (pour des tests), vous devez modifier la variable SCRAPING_LIMIT dans la section Configuration du code. Vous pouvez y renseigner le nombre d'URLs que vous souhaitez traiter.
+## Structure du dépôt
 
+Tout le code et les fichiers de données sont dans le dossier `letterboxd_group9/`.
+
+| Fichier | Rôle |
+| :--- | :--- |
+| `letterboxd_group9/scrape_letterboxd.py` | Collecte des URLs depuis les pages populaires Letterboxd. |
+| `letterboxd_group9/clean_links.py` | Lecture de `all_letterboxd_links.txt`, suppression des doublons → écriture de `all_letterboxd_links_clean.txt`. |
+| `letterboxd_group9/scraperletterboxd.py` | Scraping des fiches à partir de la liste nettoyée ; export progressif en JSON et CSV. |
+| `letterboxd_group9/notespardécennies.py` | Analyse statistique sur le CSV, moyennes par décennie, génération du box plot. |
+| `letterboxd_group9/all_letterboxd_links.txt` | Liste brute des URLs collectées avant dédoublonnage. |
+| `letterboxd_group9/all_letterboxd_links_clean.txt` | Liste des URLs utilisées pour le scraping détaillé (sans doublons). |
+| `letterboxd_group9/movies_data_PROGRESSIVE.json` | Données agrégées au format JSON. |
+| `letterboxd_group9/movies_data_PROGRESSIVE.csv` | Même jeu de données au format CSV (analyse, tableurs). |
+| `letterboxd_group9/box_plot_notes_par_decennie.png` | Visualisation des notes par décennie. |
+
+## Exécution
+
+1. Ouvrir un terminal et se placer dans le dossier `letterboxd_group9` (chemins relatifs utilisés par les scripts).
+2. **Scraping complet** des fiches (très long : plusieurs heures selon la machine et le réseau) :
+
+```bash
+python3 scraperletterboxd.py
+```
+
+3. Pour **tester** sur un nombre limité d’URLs, modifier la variable `SCRAPING_LIMIT` dans la section configuration de `scraperletterboxd.py`.
+4. **Analyse** (à partir du CSV déjà présent) :
+
+```bash
+python3 notespardécennies.py
+```
+
+## Avertissement
+
+Le site Letterboxd et les bibliothèques tierces peuvent évoluer : un script qui fonctionnait à une date donnée peut nécessiter des ajustements plus tard. Respecter les conditions d’utilisation de Letterboxd pour tout usage au-delà de ce cadre académique.
 
